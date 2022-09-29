@@ -1,7 +1,7 @@
 import { Server } from 'socket.io'
 import { routes } from './socket.routes'
 
-const url = 'http://localhost:3050/'
+const url = 'http://localhost:5173/'
 
 const colors = [
     '#bf616a',

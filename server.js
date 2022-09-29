@@ -5,7 +5,7 @@ import { Server } from 'socket.io'
 import { handler } from './build/handler.js'
 import { routes } from './socket.routes.js'
 
-const port = 5173
+const port = 3050
 const app = express()
 const server = createServer(app)
 
