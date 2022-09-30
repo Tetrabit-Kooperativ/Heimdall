@@ -55,8 +55,9 @@
 
         .body {
             width: 50%;
-            max-width: 500px;
-            height: 50%;
+            max-width: 600px;
+            height: auto;
+            max-height: 80%;
             background-color: $grey;
             color: $white;
             padding: 20px;
@@ -65,6 +66,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow-y: scroll;
 
             h1 {
                 color: $wine;
@@ -73,6 +75,7 @@
 
             p {
                 margin: 40px;
+                white-space: pre-wrap;
             }
 
             button {

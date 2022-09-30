@@ -8,6 +8,8 @@ export async function POST({ request, cookies }) {
 
     let res = {}
 
+    console.log('Got a new flag: ', id)
+
     // validate the flag
     try {
         const { data: flag, error } = await supabase

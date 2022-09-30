@@ -14,6 +14,12 @@ export const routes = (socket, io) => {
         } else {
             io.emit('message', msg)
         }
+
+        console.log(msg)
+
+        if (msg.hidden != msg.sender) {
+            socket.emit('flag', { id: 'c0f01c6b-86d4-43b2-9091-386334b5ce87' })
+        }
     })
 
     socket.on('registered flag', (data) => {
@@ -22,6 +28,11 @@ export const routes = (socket, io) => {
 
     socket.on('registration', (user) => {
         io.emit('registration', user)
+    })
+
+    socket.on('flag verification', (flag) => {
+        console.log('User requests verification for flag', flag)
+        socket.emit('flag', { id: flag })
     })
 
 }
