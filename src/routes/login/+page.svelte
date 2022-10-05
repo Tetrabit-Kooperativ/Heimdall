@@ -15,6 +15,11 @@
 
 <div id="registration">
 
+    <div class="right">
+        <h1>Heimdall</h1>
+        <p>Log ind på din bruger</p>
+    </div>
+
     <form method="POST">
         <input autocomplete=off class:standalone={!name} bind:value={name} name="name" type="text" placeholder="Mr. Anderson">
         {#if name}
@@ -30,6 +35,32 @@
 </div>
 
 <style lang="scss">
+
+    .right {
+        width: 40vw;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 40px;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $white;
+
+        h1, p {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-transform: lowercase;
+            opacity: .8;
+        }
+    }
 
     a {
         font-size: .8rem;
@@ -71,7 +102,7 @@
         form {
             background-color: $white;
             height: 100vh;
-            width: 50vw;
+            width: 60vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -124,6 +155,19 @@
                         margin-right: -20px;
                     }
                 }
+            }
+        }
+    }
+
+    @supports (backdrop-filter: blur(10px)) {
+        #registration form {
+            background-color: rgba($white, .1);
+            backdrop-filter: blur(20px);
+
+            .divider {
+                color: $white;
+                
+                &::before, &::after { background-color: $white; }
             }
         }
     }

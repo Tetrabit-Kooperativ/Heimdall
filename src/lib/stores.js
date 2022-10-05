@@ -3,6 +3,7 @@ import { writable } from 'svelte/store'
 export const newlyFoundFlag = writable(null)
 export const alienFoundFlag = writable(null)
 export const toast = writable(null)
+export const shelfActive = writable(false)
 
 export function broadcastCapture(flag) {
     alienFoundFlag.set(flag)

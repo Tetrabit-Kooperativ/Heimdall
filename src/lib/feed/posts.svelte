@@ -35,7 +35,7 @@
 <div class="container">
     <div class="posts">
         {#each posts as post (post.id)}
-            <div in:receive={{ key: post.id }} out:send={{ key: post.id }} animate:flip={{ duration: 1000 }} class="post" style="--color: {post.user.color}">
+            <div in:receive={{ key: post.id }} out:send|local={{ key: post.id }} animate:flip={{ duration: 1000 }} class="post" style="--color: {post.user.color}">
                 <div class="meta">
                     <span class="avatar">
                         {post.user.name.slice(0, 1)}

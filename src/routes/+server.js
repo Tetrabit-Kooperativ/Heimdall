@@ -7,6 +7,15 @@ export async function POST({ request, cookies }) {
         const data = await request.json()
         const user = JSON.parse(cookies.get('user'))
 
+        console.log(data.metadata)
+
+        // return a flag if the file contains multiple extensions
+        if (data.metadata.filename.split('.').length > 2) {
+            return new Response(JSON.stringify({
+                flag: '3d29643a-eecc-4265-8316-fd81ac19702e'
+            }), { status: 422 })
+        }
+
         // return a flag if file is not an image
         const allowedFileTypes = [ 'png', 'jpg', 'webp', 'jpeg' ]
         if (!allowedFileTypes.includes(data.metadata.extension)) {
@@ -14,7 +23,6 @@ export async function POST({ request, cookies }) {
                 flag: '0e12cf7d-4f5e-45ec-82f2-7b773abac9a8'
             }), { status: 422 })
         }
-        
 
         const file = data.image.split(';base64,').pop()
         const fileBuffer = Buffer.from(file, 'base64')
@@ -29,8 +37,6 @@ export async function POST({ request, cookies }) {
 
         if (uploadError) throw uploadError
 
-        console.log(image)
-
         // create post
         const { data: post, error: postError } = await supabase
             .from('posts')
@@ -43,15 +49,11 @@ export async function POST({ request, cookies }) {
 
         if (postError) throw postError
 
-        console.log('raw post:', post)
-
         // compose post
         const composedPost = {
             ...post[0],
             user
         }
-
-        console.log('composed post:', composedPost)
 
         return new Response(
             JSON.stringify({ success: true, post: composedPost }),

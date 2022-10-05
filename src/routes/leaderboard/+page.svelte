@@ -77,8 +77,8 @@
     <ul>
         {#each users as user, i (user.name)}
             <li 
-                in:receive={{ key: user.name }} 
-                out:send={{ key: user.name }} 
+                in:receive|local={{ key: user.name }} 
+                out:send|local={{ key: user.name }} 
                 animate:flip={{ duration: 3000 }} 
                 style="--color: {user.color}" 
                 class:first={i == 0 && user.flags?.length > 0}>
@@ -105,6 +105,7 @@
 
     #leaderboard {
         width: 100vw;
+        padding: 80px;
     }
 
     .score {
@@ -120,7 +121,7 @@
     }
 
     ul {
-        margin: 0px;
+        margin: 0 auto;
         padding: 0px;
         list-style: none;
         display: flex;
@@ -130,6 +131,7 @@
         gap: 20px;
         margin-top: 20px;
         color: $white;
+        max-width: 1200px;
     }
 
     li {

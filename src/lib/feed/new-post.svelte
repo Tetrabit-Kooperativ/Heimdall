@@ -29,7 +29,8 @@
                             metadata: {
                                 name: files[0].name.split('.')[0],
                                 type: files[0].type,
-                                extension: files[0].name.split('.').at(-1)
+                                extension: files[0].name.split('.').at(-1),
+                                filename: files[0].name
                             }
                         })
                     }).then((r) => r.json())
@@ -83,17 +84,17 @@
         on:drop|preventDefault={(e) => submit(e)}>
 
         {#if dropzoneState.success}
-            <p transition:slide><svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M7 12.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></p>
+            <p transition:slide|local><svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M7 12.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></p>
         {:else if dropzoneState.uploading}
-            <p transition:slide>Uploader...</p>
+            <p transition:slide|local>Uploader...</p>
         {:else if !dropzoneState.dragging}
-            <p transition:slide class="main">
+            <p transition:slide|local class="main">
                 <svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M20 13v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6M12 15V3m0 0L8.5 6.5M12 3l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 Del et billede
             </p>
-            <p transition:slide>Træk et billede hertil, eller klik for at vælge et billede</p>
+            <p transition:slide|local>Træk et billede hertil, eller klik for at vælge et billede</p>
         {:else}
-            <p transition:slide>Slip for at uploade</p>
+            <p transition:slide|local>Slip for at uploade</p>
         {/if}
         <input type="file" name="file" id="file" accept="image/png, image/jpeg, image/jpg, image/webp">
         <button>Submit</button>
