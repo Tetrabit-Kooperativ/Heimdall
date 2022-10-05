@@ -35,4 +35,8 @@ export const routes = (socket, io) => {
         socket.emit('flag', { id: flag })
     })
 
+    socket.on('new post', (post) => {
+        io.emit('new post', post)
+    })
+
 }

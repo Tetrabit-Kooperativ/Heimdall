@@ -9,7 +9,7 @@ export const actions = {
 
         const { data: res, error } = await supabase
             .from('users')
-            .select('name, color')
+            .select('name, color, id')
             .eq('name', name)
 
         if (error || !res.length) return invalid(400, { name, nonexistant: true })
