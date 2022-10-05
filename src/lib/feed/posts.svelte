@@ -63,7 +63,7 @@
         height: 70vh;
         overflow: hidden;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         border-radius: 0 0 20px 20px;

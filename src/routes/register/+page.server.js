@@ -19,7 +19,8 @@ export const actions = {
 
             cookies.set('user', JSON.stringify({
                 name: res[0].name,
-                color: res[0].color
+                color: res[0].color,
+                id: res[0].id
             }))
 
             return { user: res[0] }
