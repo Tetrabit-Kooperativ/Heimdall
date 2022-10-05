@@ -1,12 +1,11 @@
 <script>
 
     import { socket } from '$lib/socket'
-    import { slide } from 'svelte/transition'
     import { flip } from 'svelte/animate'
     import { crossfade } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
 
-    export let posts
+    export let posts = []
 
     socket.on('new post', (post) => {
         console.log(post)
