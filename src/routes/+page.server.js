@@ -1,6 +1,5 @@
 import { supabase } from '$lib/supabase'
 import { error, redirect } from '@sveltejs/kit'
-import { decode } from 'base64-arraybuffer'
 
 export async function load({ cookies }) {
     try {
