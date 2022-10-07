@@ -13,10 +13,10 @@
         success: false
     }
 
-    function submit(e) {
+    function submit({ dropEvent, submitEvent }) {
         try {
             dropzoneState.uploading = true
-            const files = e.dataTransfer.files
+            const files = dropEvent?.dataTransfer.files || submitEvent?.target.file.files
             const reader = new FileReader()
 
             reader.onload = async (e) => {
@@ -76,12 +76,12 @@
         enctype="multipart/form-data"
         class:dragging={dropzoneState.dragging}
         bind:this={uploadForm}
-        on:submit|preventDefault={(e) => submit(e)}
         on:dragenter={() => dropzoneState.dragging = true} 
         on:dragleave={() => dropzoneState.dragging = false}
         on:dragover|preventDefault
         on:click={() => uploadForm.querySelector('input').click()}
-        on:drop|preventDefault={(e) => submit(e)}>
+        on:submit|preventDefault={(e) => submit({ submitEvent: e })}
+        on:drop|preventDefault={(e) => submit({ dropEvent: e })}>
 
         {#if dropzoneState.success}
             <p transition:slide|local><svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M7 12.5l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></p>
@@ -96,7 +96,7 @@
         {:else}
             <p transition:slide|local>Slip for at uploade</p>
         {/if}
-        <input type="file" name="file" id="file" accept="image/png, image/jpeg, image/jpg, image/webp">
+        <input on:change={() => uploadForm.querySelector('button').click()} type="file" name="file" id="file" accept="image/png, image/jpeg, image/jpg, image/webp">
         <button>Submit</button>
     </form>
 </div>
@@ -105,7 +105,6 @@
 
     form {
         height: 300px;
-        width: 100%;
         background-color: $grey;
         display: flex;
         justify-content: center;

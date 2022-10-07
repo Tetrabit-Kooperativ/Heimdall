@@ -3,7 +3,7 @@
     import { page } from '$app/stores'
     import { goto } from '$app/navigation'
     import { onMount } from 'svelte'
-    import { slide } from 'svelte/transition'
+    import { slide, fade } from 'svelte/transition'
     import { socket } from '$lib/socket'
     import { enhance, applyAction } from '$app/forms'
 
@@ -15,7 +15,7 @@
 
 </script>
 
-<div id="registration">
+<div id="registration" transition:fade>
     <div class="right">
         <h1>Heimdall</h1>
         <p>Opret en ny bruger</p>

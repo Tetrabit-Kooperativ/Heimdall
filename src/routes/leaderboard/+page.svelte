@@ -4,6 +4,7 @@
     import { crossfade } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { socket } from '$lib/socket'
+    import { blur } from 'svelte/transition'
 
     export let data
     let users = data.data
@@ -73,13 +74,14 @@
 
 </script>
 
-<div id="leaderboard">
+
+<div id="leaderboard" transition:blur>
     <ul>
         {#each users as user, i (user.name)}
             <li 
                 in:receive|local={{ key: user.name }} 
                 out:send|local={{ key: user.name }} 
-                animate:flip={{ duration: 3000 }} 
+                animate:flip|local={{ duration: 3000 }} 
                 style="--color: {user.color}" 
                 class:first={i == 0 && user.flags?.length > 0}>
                 <div class="user">

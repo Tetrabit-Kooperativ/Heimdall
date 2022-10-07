@@ -16,7 +16,9 @@
 <Shelf />
 
 <div on:click={() => { if ($shelfActive) $shelfActive = false }} class="page-wrapper" class:scooched={$shelfActive}>
-  <slot />
+  <div class="transition-container">
+    <slot />
+  </div>
 </div>
 
 <style lang="scss">

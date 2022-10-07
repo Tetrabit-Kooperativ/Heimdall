@@ -3,7 +3,7 @@
     import { page } from '$app/stores'
     import { goto } from '$app/navigation'
     import { onMount } from 'svelte'
-    import { slide } from 'svelte/transition'
+    import { slide, fade } from 'svelte/transition'
 
     onMount(async() => {
         if ($page.data.name) goto('/')
@@ -13,7 +13,7 @@
 
 </script>
 
-<div id="registration">
+<div id="registration" transition:fade>
 
     <div class="right">
         <h1>Heimdall</h1>
