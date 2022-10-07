@@ -11,6 +11,8 @@ export const routes = (socket, io) => {
 
         if (xssStrings.some((e) => msg.body.includes(e))) {
             socket.emit('flag', { id: '952519c3-a0e9-45df-a033-06ff6ce49932' })
+        } else if (msg.body == '1ebf0417-973e-4aff-8761-eba5a93f0597') {
+            socket.emit('flag', { id: '1ebf0417-973e-4aff-8761-eba5a93f0597' })
         } else {
             io.emit('message', msg)
         }
