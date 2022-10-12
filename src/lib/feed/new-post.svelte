@@ -48,7 +48,7 @@
                         socket.emit('flag verification', error.flag)
                         newToast('Det er kun tilladt at uploade billedfiler')
                     } else {
-                        newToast('Der gjorde du serveren forvirret - ingen flag for det')
+                        newToast('Der gjorde du serveren forvirret - ingen flag for det (din fil er nok for stor!)')
                     }
 
                 }
