@@ -12,15 +12,6 @@
 
     let name
 
-    function checkForSQLi(value) {
-        console.log(value)
-        const sqliExamples = ['1=1', '1 = 1', '\'', 'SELECT', ' OR ']
-
-        if (sqliExamples.some(example => value.includes(example))) {
-            $newlyFoundFlag = { message: 'Dér var et flag! Log ind, og send flaget her i chatten for at få dit point: 1ebf0417-973e-4aff-8761-eba5a93f0597' }
-        }
-    }
-
 </script>
 
 <div id="registration" transition:fade>
@@ -31,7 +22,7 @@
     </div>
 
     <form method="POST">
-        <input on:input={(e) => checkForSQLi(e.target.value)} autocomplete=off class:standalone={!name} bind:value={name} name="name" type="text" placeholder="Mr. Anderson">
+        <input autocomplete=off class:standalone={!name} bind:value={name} name="name" type="text" placeholder="Mr. Anderson">
         {#if name}
             <button transition:slide class:ready={name}>
                 <svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M9 21.5v-6m0 0V6.997a.6.6 0 01.88-.53l6.67 3.53a.6.6 0 01.024 1.048L9 15.5zM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
