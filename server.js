@@ -13,6 +13,7 @@ const io = new Server(server)
 
 io.on('connection', (socket) => routes(socket, io))
 
+app.use(express.bodyParser({ limit: '5mb' }))
 app.use(handler)
 
 server.listen(port)

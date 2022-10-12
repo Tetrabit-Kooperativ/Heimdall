@@ -28,13 +28,13 @@
             </span>
             <h1>{data.user.name}</h1>
         </div>
-
-        <div class="flags">
-            {#each new Array(data.flagCount) as _}
-            <svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M8 21v-5m0 0V3.577a.6.6 0 01.916-.51l8.79 5.442a.6.6 0 01.017 1.009L8 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            {/each}
-        </div>
-        
+        {#if data.flagCount}
+            <div class="flags">
+                    {#each new Array(data.flagCount) as _}
+                        <svg width="28px" height="28px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M8 21v-5m0 0V3.577a.6.6 0 01.916-.51l8.79 5.442a.6.6 0 01.017 1.009L8 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    {/each}
+            </div>
+        {/if}
     </div>
 </div>
 
